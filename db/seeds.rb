@@ -1,5 +1,5 @@
 # crea usuarios
-User.create(name: 'admin', email: 'admin@gmail.com', password: '12345678', role: 'ADMIN')
+User.create(name: 'admin', email: 'admin@admin.com', password: '12345678', role: 'ADMIN')
 User.create(name: 'sergio', email: 'sergio@gmail.com', password: '12345678', role: 'WORKER')
 User.create(name: 'sebastian', email: 'sebastian@gmail.com', password: '12345678', role: 'WORKER')
 User.create(name: 'carlos', email: 'carlos@gmail.com', password: '12345678', role: 'WORKER')
