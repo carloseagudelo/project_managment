@@ -1,0 +1,22 @@
+<h1>CREAR UNA NUEVA TAREA</h1>
+
+<%= form_for :task, url: tasks_path do |f| %>
+	
+	<p>
+  	<%= f.label :name %><br>
+  	<%= f.text_field :name %>
+    <p class='message'><%= show_errors(@task, :name) %></p>
+	</p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+    <p class='message'><%= show_errors(@task, :description) %></p>
+  </p>
+
+	<p>
+  	<%= f.submit 'GUARDAR' %>
+    <%= f.hidden_field :job_id, :value => params[:job_id]%>
+	</p>
+    
+<% end %>

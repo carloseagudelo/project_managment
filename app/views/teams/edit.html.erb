@@ -1,0 +1,42 @@
+<h1>MODIFICAR INFORMACIÓN DE <%= @team.name %></h1>
+
+<%= form_for :team, url: '/teams/'+@team.id.to_s, method: :patch, :html=> { class: 'team-form'} do |f| %>
+	
+	<p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+    <p class='message'><%= show_errors(@team, :name) %></p>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+    <p class='message'><%= show_errors(@team, :description) %></p>
+  </p>
+
+  <div class="list">
+    <p class="list-group-item active text-center">SELECCIONAR INTEGRANTES DEL EQUIPO</p>
+    <%= render 'teams/select_user', users: @users, type: 'edit', team_id: @team.id %>
+  </div>
+
+  <br />
+
+	<div class="row">
+    <div class="col-sm-12">
+      <%= f.submit 'GUARDAR', class: "btn btn-primary float-left" %>
+    </div>
+  </div> 
+
+<% end %>
+
+<script type="text/javascript">
+  $('.team-form').on('submit', function(){
+    var ids = ""
+    $( "div.list" ).find( "input" ).each(function( index ) {
+      if($( this ).is(":checked")){
+        ids = ids + $( this ).attr('id') + ','
+      }
+    });
+    $('.team-form').append('<input type="hidden" name="ids" id="team_ids" value="'+ids.substring(0, ids.length - 1)+'"/>');
+  });
+</script>

@@ -1,0 +1,56 @@
+<h1>EQUIPO <%= @team.name.upcase%></h1>
+<hr />
+
+<br />
+
+<h4>MIEMBROS DEL EQUIPO</h4>
+<%= render 'teams/members', members: @members, team_id: @team.id %>
+
+<br />
+
+<h4>TRABAJOS PENDIENTES</h4>
+<div class="row">
+  <% @jobs.each do |job|%>
+  <tr>
+  	<center>
+  	  <div class="col-sm-4"> 	
+        <div class="card" style="width: 20rem;">
+	      <img class="card-img-top" src="...">
+	      <div class="card-body">
+	        <h4 class="card-title"><%=job.name%></h4>
+	        <p class="card-text"><%=job.description%>
+	        	<h5><b>RESPONSABLE:</b> <%= User.find(job.user_id).name.upcase %></h5>
+	        	<h5><b>PORCENTAJE:</b> <%= Task.calculate_porcent(job.id) %>%</h5>
+	        </p>
+	        <div class="row">	        	
+	          <% if current_user.id == @lead %>
+		        <div class="col-sm-6">
+		          <%= link_to 'REVISAR', job_path(job.id), class: 'btn btn-primary' %>	
+		        </div>
+		        <div class="col-sm-6">
+		          <%= link_to 'ACTUALIZAR', edit_job_path(job.id, @team.id), class: 'btn btn-primary' %>	
+		        </div>
+		      <% else %>
+		      	<div class="col-sm-12">
+		          <%= link_to 'REVISAR', job_path(job.id), class: 'btn btn-primary' %>	
+		        </div>
+		      <% end %>
+	        </div>
+	        <br />
+	      </div>
+	    </div>
+	  </div>
+    </center>
+ </tr>
+<% end %>
+</div>
+
+<br />
+
+<% if current_user.id == @lead %>
+  <div class="row">
+    <div class="col-sm-12">
+  	<%= link_to 'CREAR UN TRABAJO', new_job_path(params[:id]), class: 'btn btn-primary float-right' %>
+    </div>
+  </div>
+<% end %>

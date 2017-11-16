@@ -1,0 +1,28 @@
+<h1><%= @job.name.upcase%></h1>
+<hr />
+
+<h2><%= @job.description.upcase %>
+
+<br />
+
+<div class="list">
+  <p class="list-group-item active text-center">LISTA DE TARES</p>
+  <% @tasks.each do |task|%>
+  	<% if task.task.checked %>
+ 	  <p class="list-group-item"><%= task.task.name %> <input id="<%= task.task.id%>" type="checkbox" class="form-check float-right" checked onchange="changeCheckbox(this)""></p>
+ 	<% else %>
+ 	  <p class="list-group-item"><%= task.task.name %> <input id="<%= task.task.id%>" type="checkbox" class="form-check float-right" onchange="changeCheckbox(this)""></p>
+ 	<% end %>
+  <% end %>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col-sm-12">
+	<%= link_to 'CREAR UNA TAREA NUEVA', new_task_path(@job.id), class: 'btn btn-primary float-right' %>
+	<% if current_user.role == 'ADMIN'%>
+	  <%= link_to 'ENVIAR NOTIFICACIÓN', notification_path(@job.id), class: 'btn btn-primary float-left' %>
+	<% end %>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+/* CSS REQUIRED */
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
+
+/* DEMO ONLY - REMOVES UNWANTED MARGIN */
+.well .list-group {
+    margin-bottom: 0px;
+}
+
+.scrollable{
+	overflow-y: auto;
+	height: 450px;
+	overflow-x: hidden;
+}
+
+
+.glyphicon-info-sign{
+	color: #337ab7;
+	font-size: 20px;
+	margin-left: 20px;
+	line-height: -1;
+}
+
+footer {
+  bottom:0;
+	text-align: center;
+	color: white;
+	background-color: #337ab7;
+	padding: 10px !important;
+	font-size: 20px;
+	font-weight: bold;
+	position: fixed;
+	width: 100%;
+	p{
+		margin-bottom:0 !important;
+	}
+}
+
+.shadow-box{
+	box-shadow: 10px 10px 5px #888888;
+	.input-container{
+		padding: 40px;
+		.btn-primary{
+			text-align: center;
+		}
+	}	
+	h2{
+		margin-bottom: 1px !important;
+	}
+}
+
+.page-header {
+    @extend .mb-4;
+    @extend .mt-5;
+    @extend .pb-2;
+    border-bottom: 1px solid $gray-200;
+}
+
+.message{
+ color: red;
+}

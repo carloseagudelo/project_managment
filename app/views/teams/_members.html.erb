@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <% members.each do |member| %>
+    <li class="list-group-item justify-content-between">
+      <%= member.user.name.upcase %>
+      <span class="badge badge-default badge-pill">TAREAS HABILITADAS(<%= Job.where(user_id:  member.user.id, team_id: team_id).count %>)</span>
+    </li>
+  <% end %>
+</ul>

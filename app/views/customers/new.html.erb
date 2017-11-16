@@ -1,0 +1,22 @@
+<h1>CREAR UN NUEVO CLIENTE</h1>
+
+<%= form_for :customer, url: customers_path do |f| %>
+	
+	<p>
+  	<%= f.label :name %><br>
+  	<%= f.text_field :name %>
+    <p class='message'><%= show_errors(@customer, :name) %></p>
+	</p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+    <p class='message'><%= show_errors(@customer, :description) %></p>
+  </p>
+
+
+	<p>
+  	<%= f.submit 'GUARDAR', class: "btn btn-primary float-left" %>
+	</p>
+
+<% end %>

@@ -1,0 +1,63 @@
+<h1>TAREAS EN GENERAL</h1>
+<br></br>
+
+<table  class="table table-striped">
+  <thead>
+    <tr>
+      <% if current_user.role == 'ADMIN' %>
+        <th>RESPONSABLE</th>
+      <%end%>
+      <th>TRABAJO</th>
+      <th>EQUIPO</th>
+      <th>PORCENTAJE</th>
+      <th>FECHA DE CREACIÓN</th>
+      <th>FECHA DE VENCIMIENTO</th>
+      <th>VER TRABAJO</th>
+      <th>VER EQUIPO</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if current_user.role == 'ADMIN' %>
+
+      <% @users.each do |us| %>
+        <% us.jobs.each do |user| %>
+          <tr>
+            <td><%= us.name.upcase %></td>
+            <td><%= user.name %></td>
+            <td><%= Team.find(user.team_id).name %></td>
+            <td><%= Task.calculate_porcent(user.id) %>%</td>
+            <td><%= user.created_at.strftime("%Y-%m-%d") %></td>
+            <td></td>
+            <td>
+              <%= link_to 'LINK', job_path(user.id) %>
+            </td>
+            <td>
+              <%= link_to 'LINK', team_path(user.team_id)%>
+            </td>
+          </tr>
+        <%end%>
+      <%end%>
+
+    <% else %>
+      <% @user.jobs.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= Team.find(user.team_id).name %></td>
+          <td><%= Task.calculate_porcent(user.id) %>%</td>
+          <td><%= user.created_at.strftime("%Y-%m-%d") %></td>
+          <td></td>
+          <td>
+            <%= link_to 'LINK', job_path(user.id) %>
+          </td>
+          <td>
+            <%= link_to 'LINK', team_path(user.team_id)%>
+          </td>
+        </tr>
+      <%end%>
+    <% end %>
+  </tbody>
+
+</table>
+<br></br>
+

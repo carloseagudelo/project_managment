@@ -1,0 +1,13 @@
+<% if type == 'new' %>
+  <% users.each do |user| %>
+    <p class="list-group-item"><%= user.name %> <input id = "<%= user.id %>" type="checkbox" class="form-check float-right"></p>
+  <% end %>
+<% else %>
+  <% users.each do |user| %>
+  	<% if UsersTeam.where(team_id: team_id, user_id: user.id).count > 0 %>
+      <p class="list-group-item"><%= user.name %> <input id="<%= user.id %>" type="checkbox" class="form-check float-right" checked></p>
+    <% else %>
+      <p class="list-group-item"><%= user.name %> <input id="<%= user.id %>" type="checkbox" class="form-check float-right" ></p>
+    <% end %>
+  <% end %>
+<% end %>
