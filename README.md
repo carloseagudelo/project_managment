@@ -24,13 +24,7 @@
     * $ usuario: admin@admin.com, Contraseña: 12345678
 
 
-* **Formato documento de excel para la carga de pre-registrados:**
-    * primer campo de la primera fila: "Cedula"
-    * segundo campo de la primera fila: "Fondo"
-    * a partir de estos dos encabezados, llenar con los datos correspondientes
-
-
-* **Fecha de desarollo:** Noviembre 2017
+* **Fecha de desarrollo:** Noviembre 2017
 
 
 * **Lugar:** Medellín Colombia
